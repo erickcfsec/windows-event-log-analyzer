@@ -1,10 +1,12 @@
-# Windows Event Log Analyzer
+# 🛡️ Windows Event Log Analyzer
+
+[🇺🇸 English](README.md) | [🇧🇷 Português (Brasil)](README.pt-BR.md)
 
 A Python-based Windows Security Event Log analyzer designed to identify suspicious authentication activity, detect potential brute-force patterns, and generate structured security alerts.
 
 This project is part of a hands-on cybersecurity portfolio focused on Blue Team operations, security monitoring, and SOC analysis.
 
-## Overview
+## 🎯 Overview
 
 The Windows Event Log Analyzer collects Windows Security events, parses their XML representation, identifies repeated failed logon attempts, and stores generated alerts in a JSON file.
 
@@ -12,7 +14,7 @@ The current detection logic focuses on Windows Security Event ID **4625** — An
 
 The main objective is to demonstrate a practical security monitoring workflow using Python and native Windows event logs.
 
-## Features
+## ⚙️ Features
 
 - Collect Windows Security Event Logs.
 - Parse raw Windows Event XML.
@@ -25,7 +27,7 @@ The main objective is to demonstrate a practical security monitoring workflow us
 - Execute the analysis through a command-line interface.
 - Run automated tests with pytest.
 
-## Detection Rule
+## 🚨 Detection Rule
 
 | Attribute | Value |
 |---|---|
@@ -44,7 +46,7 @@ An alert is generated when the threshold is met.
 
 See [Detection Rules](docs/detection_rules.md) for details.
 
-## Architecture
+## 🏗️ Architecture
 
 The application follows a modular processing pipeline:
 
@@ -56,7 +58,7 @@ The application follows a modular processing pipeline:
 
 See [Architecture](docs/architecture.md).
 
-## Technology Stack
+## 💻 Technology Stack
 
 - Python
 - Windows Event Log API
@@ -66,7 +68,7 @@ See [Architecture](docs/architecture.md).
 - pytest
 - PowerShell
 
-## Requirements
+## 📋 Requirements
 
 - Windows operating system.
 - Python 3.10 or newer.
@@ -75,7 +77,7 @@ See [Architecture](docs/architecture.md).
 
 The project uses `pywin32` to interact with the Windows Event Log API.
 
-## Installation
+## 📦 Installation
 
 Clone the repository:
 
@@ -102,7 +104,7 @@ Install dependencies:
 python -m pip install -e ".[dev]"
 ```
 
-## Usage
+## 🖥️ Usage
 
 Run the analyzer:
 
@@ -125,7 +127,7 @@ Display available options:
 python -m event_analyzer --help
 ```
 
-### Custom execution
+### 🔧 Custom Execution
 
 Example using a threshold of 10 failed attempts within 10 minutes:
 
@@ -141,7 +143,7 @@ python -m event_analyzer --storage data/custom_alerts.json
 
 Reading the Windows Security log may require an elevated PowerShell session and appropriate Windows permissions.
 
-## Example Detection Scenario
+## 🔍 Example Detection Scenario
 
 The following is an illustrative scenario, not a real incident:
 
@@ -150,13 +152,13 @@ The following is an illustrative scenario, not a real incident:
 - All five events occur within five minutes.
 - The configured threshold is five attempts.
 
-Expected result: the analyzer generates a `WIN-AUTH-001` alert with High severity.
+**Expected result:** the analyzer generates a `WIN-AUTH-001` alert with High severity.
 
 The alert includes the source IP, number of failed attempts, timestamps, usernames, and event record IDs when available.
 
 See [Investigation Examples](docs/investigation_examples.md).
 
-## Testing
+## 🧪 Testing
 
 Run the automated test suite:
 
@@ -164,11 +166,9 @@ Run the automated test suite:
 python -m pytest -v -p no:cacheprovider --basetemp=.pytest-tmp
 ```
 
-The test suite covers the collector, parser, detector, alert manager, pipeline, and command-line interface.
-
 Tests cover the collector, parser, detector, alert manager, pipeline, and command-line interface.
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 windows-event-log-analyzer/
@@ -191,7 +191,6 @@ windows-event-log-analyzer/
 │       ├── detector.py
 │       ├── parser.py
 │       └── pipeline.py
-
 ├── tests/
 ├── .gitignore
 ├── pyproject.toml
@@ -199,7 +198,7 @@ windows-event-log-analyzer/
 └── README.md
 ```
 
-## Current Limitations
+## ⚠️ Current Limitations
 
 - Detection currently focuses on Event ID 4625.
 - Events without a valid source IP or parseable timestamp are ignored by the detector.
@@ -209,7 +208,7 @@ windows-event-log-analyzer/
 - The current rule groups events by source IP and does not correlate activity across multiple IP addresses.
 - The tool does not independently block IP addresses or disable accounts.
 
-## Roadmap
+## 🗺️ Roadmap
 
 - Add structured application logging.
 - Expand authentication detection rules.
@@ -218,13 +217,13 @@ windows-event-log-analyzer/
 - Improve reporting capabilities.
 - Integrate with a SIEM or security monitoring platform in a future iteration.
 
-## Disclaimer
+## ⚖️ Disclaimer
 
 This project is intended for educational purposes and authorized security monitoring.
 
 Use it only on systems and environments where you have permission to access Windows Security Event Logs.
 
-## Author
+## 👨‍💻 Author
 
 **Erick Ferreira**
 
